@@ -1,4 +1,3 @@
-import './InputCreator';
 
 function InputCreator() {
     return (

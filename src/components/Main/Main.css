@@ -1,4 +1,22 @@
 .main {
-    width: 100%;
-    height: 100vh;
+    padding: 90px 60px 150px;
+}
+
+.main__welcome {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 50px;
+    letter-spacing: -2px;
+}
+
+.main__title {
+    max-width: 500px;
+    margin: 0 auto 30px;
+    font-size: 50px;
+    color: #FFFB47;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 2px 2px black;
 }

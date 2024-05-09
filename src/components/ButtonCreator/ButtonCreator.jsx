@@ -1,4 +1,3 @@
-import './ButtonCreator';
 
 function ButtonCreator() {
     return (

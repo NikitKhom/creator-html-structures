@@ -1,0 +1,51 @@
+.footer {
+    padding: 30px 60px;
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+}
+
+.footer__link {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all .5s;
+}
+
+.footer__link_type_mail {
+    background-image: url("../../images/mail.svg");
+}
+
+.footer__link_type_vk {
+    background-image: url("../../images/vk.svg");
+}
+
+.footer__link_type_git {
+    background-image: url("../../images/github.svg");
+}
+
+.footer__link:hover {
+    transform: scale(110%);
+    opacity: .8;
+}
+
+.footer__author {
+    font-weight: 500;
+}
+
+.footer__author span {
+    font-weight: 900;
+}

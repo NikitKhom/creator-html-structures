@@ -5,6 +5,7 @@ import Main from '../Main/Main';
 import InputCreator from '../InputCreator/InputCreator';
 import ButtonCreator from '../ButtonCreator/ButtonCreator';
 import FormCreator from '../FormCreator/FormCreator';
+import Footer from '../Footer/Footer';
 
 
 
@@ -36,6 +37,7 @@ function App() {
               <FormCreator/>
               }/>
       </Routes>
+      <Footer />
     </div>
   )
 }
