@@ -2,9 +2,9 @@
 import { Routes, Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
-import InputCreator from '../InputCreator/InputCreator';
+import InProgress from '../InProgress/InProgress';
 import ButtonCreator from '../ButtonCreator/ButtonCreator';
-import FormCreator from '../FormCreator/FormCreator';
+// import FormCreator from '../FormCreator/FormCreator';
 import Footer from '../Footer/Footer';
 
 
@@ -24,7 +24,7 @@ function App() {
           <Route
             path='/create-input'
             element={ 
-              <InputCreator/>
+              <InProgress/>
               }/>
           <Route
             path='/create-button'
@@ -34,7 +34,7 @@ function App() {
           <Route
             path='/create-form'
             element={ 
-              <FormCreator/>
+              <InProgress/>
               }/>
       </Routes>
       <Footer />
