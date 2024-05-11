@@ -1,10 +1,15 @@
 import PropTypes from 'prop-types';
 
-function Frame({ width = 300, height=200, children}) {
+function Frame({
+    width = 300,
+    height=200, 
+    option=false,
+    children}) {
 
     const frameSize = {
-        width: `${width}px`,
-        height: `${height}px`,
+        minWidth: `${width}px`,
+        minHeight: `${height}px`,
+        justifyContent: `${option ? "space-between": "center"}`
     };
 
     return (
@@ -20,6 +25,7 @@ function Frame({ width = 300, height=200, children}) {
 Frame.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
+    option: PropTypes.bool,
     children: PropTypes.node.isRequired,
 }
 

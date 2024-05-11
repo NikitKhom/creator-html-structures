@@ -32,7 +32,7 @@
     text-decoration: none;
     border: 2px solid black;
     box-shadow: 2px 2px black;
-    background: rgb(151, 71, 255);
+    background: #A8A6FF;
     transition: all .4s;
 }
 
@@ -41,7 +41,7 @@
     animation-timing-function: ease-in-out;
     animation-duration: .4s;
     animation-fill-mode: forwards;
-    background-color: rgb(155, 97, 231);
+    background-color: #b5b3fafd;
 }
 
 .navigation__link_active {
