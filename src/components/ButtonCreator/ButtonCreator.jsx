@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Frame from "../Frame/Frame";
+import Input from "../Input/Input";
+import Select from "../Select/Select";
+import Controller from "../Controller/Controller";
 import ButtonDemo from "../ButtonDemo/ButtonDemo";
 
 function ButtonCreator() {
@@ -40,20 +43,36 @@ function ButtonCreator() {
                 <form className="btn-creator__form">
                     <h2 className="btn-creator__title">Текст</h2>
                     <section className="btn-creator__form-section">
+                        <Input 
+                        name="text"
+                        placeholder="text: button"
+                        onChange={handleChange}
+                        defaultValue={values.title}
+                        />
+                        <Input
+                        name="classname"
+                        placeholder="classname: mybutton"
+                        onChange={handleChange}
+                        defaultValue={values.className}
+                        />
+                        <Select 
+                        name="fontFamily"
+                        onChange={handleChange}
+                        defaultValue={values.fontFamily}
+                        options={[ "Arial", "Georgia", "TimesNewRoman", "Impact" ]}
+                        />
 
-                        <input className="btn-creator__input btn-creator__input_type_text" type="text" name="title" placeholder="text: button" onChange={handleChange} defaultValue={values.title}/>
-                        <input className="btn-creator__input btn-creator___input_type_text" type="text" name="classname" placeholder="classname: mybutton" onChange={handleChange} defaultValue={values.className}/>
-                        <select className="btn-creator__input btn-creator__input_type_select" name="fontFamily" onChange={handleChange} defaultValue={values.fontFamily}>
-                            <option value="Arial">Arial</option>
-                            <option value="Georgia">Georgia</option>
-                            <option value="TimesNewRoman">TimesNewRoman</option>
-                            <option value="Impact">Impact</option>
-                        </select>
-
-                        <label className="btn-creator__label" htmlFor="fontSize" >
-                                    Font-size: <span className="btn-creator__value" >{values.fontSize}px</span>
-                                </label>
-                                <input className="btn-creator__input btn-creator__input_type_range" id="fontSize" type="range" name="fontSize" onChange={handleChange} defaultValue={values.fontSize} max={28} min={8}/>
+                        <Controller 
+                        title="Font-size"
+                        name="fontSize"
+                        onChange={handleChange}
+                        value={values.fontSize}
+                        range={{ min: 8, max:28 }}
+                        />
+                        {/* <label className="btn-creator__label" htmlFor="fontSize" >
+                            Font-size: <span className="btn-creator__value" >{values.fontSize}px</span>
+                        </label>
+                        <input className="btn-creator__input btn-creator__input_type_range" id="fontSize" type="range" name="fontSize" onChange={handleChange} defaultValue={values.fontSize} max={28} min={8}/> */}
                         <div className="btn-creator__options">
                             
                             <input className="btn-creator__checkbox" id="isItalic" type="checkbox" name="isItalic" onChange={handleChangeCheckbox} defaultChecked={checkboxesValues.isItalic}/>

@@ -1,0 +1,32 @@
+.controller__range {
+    appearance: none;
+    height: 10px;
+    background-color: #A8A6FF;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 2px solid black;
+    outline: none;
+    transition: all .3s;
+}
+
+.controller__range:focus {
+    box-shadow: 2px 2px black;
+}
+
+.controller__range::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 25%;
+    background-color:#FF792E;
+    border: 2px solid black;
+}
+
+.controller__label {
+    letter-spacing: -1px;
+    font-weight: 500;
+}
+
+.controller__value {
+    color: #FF792E;
+}
