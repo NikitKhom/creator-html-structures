@@ -1,0 +1,25 @@
+.form-section__title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    background-color: #A8A6FF;
+}
+
+.form-section__section {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    transition: all .5s ease-in-out;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.form-section__section_hidden {
+        max-height: 0;
+    }

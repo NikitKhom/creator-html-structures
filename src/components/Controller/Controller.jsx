@@ -1,7 +1,6 @@
 import { PropTypes } from 'prop-types';
 
 function Controller({ title, name, onChange, range, value }) {
-
     return (
         <>
             <label className="controller__label" htmlFor={name} >
@@ -13,7 +12,7 @@ function Controller({ title, name, onChange, range, value }) {
             type="range"
             name={name}
             onChange={onChange}
-            defaultValue={value}
+            value={value}
             max={range.max}
             min={range.min}
             />

@@ -5,19 +5,50 @@ import Select from "../Select/Select";
 import Controller from "../Controller/Controller";
 import ButtonDemo from "../ButtonDemo/ButtonDemo";
 import Option from "../Option/Option";
+import FormSection from "../FormSection/FormSection";
+import HiddenFormSection from "../HiddenFormSection/HiddenFormSection";
 
 function ButtonCreator() {
     const [checkboxesValues, setCheckboxesValues] = useState({
         isBold: false,
         isItalic: false,
+        isInset: false,
     });
 
-    const [values, setValues] = useState({
+    const [boxShadowMenu, setBoxShadowMenu] = useState(false);
+
+    const [requiredValues, setRequiredValues] = useState({
         title: 'Button',
         className: 'mybutton',
         fontFamily: 'Arial',
-        fontSize: 14,
+        fontSize: 17,
+        verticalPadding: 16,
+        horizontalPadding: 31,
+        borderRadius: 21,
+        borderSize: 1,
     });
+
+    const initialBoxShadowValues = {
+        boxShadowX: 0,
+        boxShadowY: 0,
+        blurRadius: 0,
+        spreadRadius: 0,
+    };
+
+    const [boxShadowValues, setBoxShadowValues] = useState({
+        boxShadowX: 0,
+        boxShadowY: 0,
+        blurRadius: 0,
+        spreadRadius: 0,
+    });
+
+
+    function toggleBoxShadowMenu() {
+        setBoxShadowMenu(!boxShadowMenu);
+        setTimeout(() => {
+            setBoxShadowValues(initialBoxShadowValues);
+        }, 500);
+    }
 
     function handleChangeCheckbox(e) {
         const checkbox = e.target;
@@ -30,7 +61,14 @@ function ButtonCreator() {
         const input = e.target;
         const value = input.value;
         const name = input.name;
-        setValues({ ...values, [name]: value });
+        setRequiredValues({ ...requiredValues, [name]: value });
+    }
+
+    function handleChangeBoxShadow(e) {
+        const input = e.target;
+        const value = input.value;
+        const name = input.name;
+        setBoxShadowValues({ ...boxShadowValues, [name]: value });
     }
 
 
@@ -42,24 +80,26 @@ function ButtonCreator() {
             option={true}
             >
                 <form className="btn-creator__form">
-                    <h2 className="btn-creator__title">Текст</h2>
-                    <section className="btn-creator__form-section">
+                    <FormSection
+                    title="Текст"
+                    rowsCount={3}
+                    >
                         <Input 
                         name="title"
                         placeholder="text: button"
                         onChange={handleChange}
-                        defaultValue={values.title}
+                        defaultValue={requiredValues.title}
                         />
                         <Input
                         name="classname"
                         placeholder="classname: mybutton"
                         onChange={handleChange}
-                        defaultValue={values.className}
+                        defaultValue={requiredValues.className}
                         />
                         <Select 
                         name="fontFamily"
                         onChange={handleChange}
-                        defaultValue={values.fontFamily}
+                        defaultValue={requiredValues.fontFamily}
                         options={[ "Arial", "Georgia", "TimesNewRoman", "Impact" ]}
                         />
 
@@ -67,7 +107,7 @@ function ButtonCreator() {
                         title="Font-size"
                         name="fontSize"
                         onChange={handleChange}
-                        value={values.fontSize}
+                        value={requiredValues.fontSize}
                         range={{ min: 8, max:28 }}
                         />
 
@@ -84,21 +124,101 @@ function ButtonCreator() {
                         ]}
                         onChange={handleChangeCheckbox}
                         />
-                    </section>
+                    </FormSection>
+                    <FormSection
+                    title="Size"
+                    >
+                        <Controller
+                        title="Vertical Size"
+                        name="verticalPadding"
+                        onChange={handleChange}
+                        value={requiredValues.verticalPadding}
+                        range={{ min: 0, max: 32 }}
+                        />
+                        <Controller
+                        title="Horizontal Size"
+                        name="horizontalPadding"
+                        onChange={handleChange}
+                        value={requiredValues.horizontalPadding}
+                        range={{ min: 0, max: 76 }}
+                        />
+                    </FormSection>
+                    <FormSection
+                    title="Border"
+                    >
+                        <Controller
+                        title="Border Size"
+                        name="borderSize"
+                        onChange={handleChange}
+                        value={requiredValues.borderSize}
+                        range={{ min: 0, max: 12 }}
+                        />
+                        <Controller
+                        title="Border Radius"
+                        name="borderRadius"
+                        onChange={handleChange}
+                        value={requiredValues.borderRadius}
+                        range={{ min: 0, max: 50 }}
+                        />
+                    </FormSection>
+                    <HiddenFormSection
+                    title="Box Shadow"
+                    isVisible={boxShadowMenu}
+                    onClick={toggleBoxShadowMenu}
+                    rowsCount={4}
+                    >
+                        <Controller
+                        title="Position Y"
+                        name="boxShadowX"
+                        onChange={handleChangeBoxShadow}
+                        value={boxShadowValues.boxShadowX}
+                        range={{ min: -50, max: 50 }}
+                        />
+                        <Controller
+                        title="Position X"
+                        name="boxShadowY"
+                        onChange={handleChangeBoxShadow}
+                        value={boxShadowValues.boxShadowY}
+                        range={{ min: -50, max: 50 }}
+                        />
+                        <Controller
+                        title="Blur Radius"
+                        name="blurRadius"
+                        onChange={handleChangeBoxShadow}
+                        value={boxShadowValues.blurRadius}
+                        range={{ min: 0, max: 50 }}
+                        />
+                        <Controller
+                        title="Spread Radius"
+                        name="spreadRadius"
+                        onChange={handleChangeBoxShadow}
+                        value={boxShadowValues.spreadRadius}
+                        range={{ min: 0, max: 50 }}
+                        />
+                    </HiddenFormSection>
                 </form>
                 <Frame
                 width={300}
                 height={200}
                 >
                     <ButtonDemo
-                        title={values.title}
-                        className={values.className}
+                        title={requiredValues.title}
+                        className={requiredValues.className}
                         style={{
-                            fontSize: values.fontSize,
-                            fontFamily: values.fontFamily,
+                            fontSize: requiredValues.fontSize,
+                            fontFamily: requiredValues.fontFamily,
                             isBold: checkboxesValues.isBold,
                             isItalic: checkboxesValues.isItalic,
-                             
+                            verticalPadding: requiredValues.verticalPadding,
+                            horizontalPadding: requiredValues.horizontalPadding,
+                            borderRadius: requiredValues.borderRadius,
+                            borderSize: requiredValues.borderSize,
+                        }}
+                        boxShadowStyle={{
+                            boxShadowX: boxShadowValues.boxShadowX,
+                            boxShadowY: boxShadowValues.boxShadowY,
+                            blurRadius: boxShadowValues.blurRadius,
+                            spreadRadius: boxShadowValues.spreadRadius,
                         }}
                     />
                 </Frame>

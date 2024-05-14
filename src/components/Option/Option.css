@@ -2,6 +2,11 @@
     height: 25px;
     box-sizing: border-box;
     border: 2px solid black;
+    border-left: 0;
+}
+
+.option__wrapper {
+    display: inline;
 }
 
 .option__checkbox {

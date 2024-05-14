@@ -5,7 +5,10 @@ function Option({ optionsInfo, onChange }) {
         <div className="option"> 
             {
                 optionsInfo.map(option => (
-                    <>    
+                    <div
+                    className='option__wrapper'
+                    key={option.name}
+                    >    
                         <input
                         key={option.name}
                         className="option__checkbox"
@@ -18,7 +21,7 @@ function Option({ optionsInfo, onChange }) {
                         <label htmlFor={option.name} className="option__label">
                             {option.title}
                         </label>
-                    </>
+                    </div>
                 ))
             }
 
