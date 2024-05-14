@@ -26,7 +26,7 @@ Controller.propTypes = {
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     range: PropTypes.object.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
     
 }
 

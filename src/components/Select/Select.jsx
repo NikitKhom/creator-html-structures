@@ -9,14 +9,10 @@ function Select({name, onChange, defaultValue, options}) {
         defaultValue={defaultValue}
         >
             {
-                options.forEach(option => {
-                    <option value={option}>{option}</option>
-                })
+                options.map(option => (
+                    <option value={option} key={option}>{option}</option>    
+                ))
             }
-            <option value="Arial">Arial</option>
-            <option value="Georgia">Georgia</option>
-            <option value="TimesNewRoman">TimesNewRoman</option>
-            <option value="Impact">Impact</option>
         </select>
     )
 }

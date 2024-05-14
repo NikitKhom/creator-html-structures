@@ -1,0 +1,54 @@
+.option {
+    height: 25px;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+
+.option__checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.option__label {
+    position: relative;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 2px;
+    margin: 0;
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.option__label:last-child {
+    border-left: 2px solid black;
+}
+
+.option__checkbox:checked + .option__label{
+    padding-left: 10px;
+    background-color: #A8A6FF;
+}
+
+.option__label::before{
+    content: "";
+    position: absolute;
+    top: calc(50% - 5px);
+    left: 5px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url("../../images/check.svg");
+    background-position: center;
+    background-size: contain;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.option__checkbox:checked + .option__label::before{
+    opacity: 1;
+}
+

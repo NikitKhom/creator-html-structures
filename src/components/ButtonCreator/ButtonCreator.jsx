@@ -4,6 +4,7 @@ import Input from "../Input/Input";
 import Select from "../Select/Select";
 import Controller from "../Controller/Controller";
 import ButtonDemo from "../ButtonDemo/ButtonDemo";
+import Option from "../Option/Option";
 
 function ButtonCreator() {
     const [checkboxesValues, setCheckboxesValues] = useState({
@@ -44,7 +45,7 @@ function ButtonCreator() {
                     <h2 className="btn-creator__title">Текст</h2>
                     <section className="btn-creator__form-section">
                         <Input 
-                        name="text"
+                        name="title"
                         placeholder="text: button"
                         onChange={handleChange}
                         defaultValue={values.title}
@@ -69,24 +70,20 @@ function ButtonCreator() {
                         value={values.fontSize}
                         range={{ min: 8, max:28 }}
                         />
-                        {/* <label className="btn-creator__label" htmlFor="fontSize" >
-                            Font-size: <span className="btn-creator__value" >{values.fontSize}px</span>
-                        </label>
-                        <input className="btn-creator__input btn-creator__input_type_range" id="fontSize" type="range" name="fontSize" onChange={handleChange} defaultValue={values.fontSize} max={28} min={8}/> */}
-                        <div className="btn-creator__options">
-                            
-                            <input className="btn-creator__checkbox" id="isItalic" type="checkbox" name="isItalic" onChange={handleChangeCheckbox} defaultChecked={checkboxesValues.isItalic}/>
-                            <label htmlFor="isItalic" className="btn-creator__label_checkbox">
-                                Italic
-                            </label>
-                        
-                        
-                            <input className="btn-creator__checkbox" id="isBold" type="checkbox" name="isBold" onChange={handleChangeCheckbox} defaultChecked={checkboxesValues.isBold}/>
-                            <label htmlFor="isBold" className="btn-creator__label_checkbox">
-                                Bold
-                            </label>
-                            
-                        </div>                      
+
+                        <Option 
+                        optionsInfo={[
+                            {title: "Bold",
+                            name: "isBold",
+                            defaultChecked: checkboxesValues.isBold
+                            },
+                            {title: "Italic",
+                            name: "isItalic",
+                            defaultChecked: checkboxesValues.isItalic
+                            }
+                        ]}
+                        onChange={handleChangeCheckbox}
+                        />
                     </section>
                 </form>
                 <Frame

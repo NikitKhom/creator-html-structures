@@ -10,5 +10,6 @@
 @import url(./components/InProgress/InProgress.css);
 @import url(./components/Input/Input.css);
 @import url(./components/Select/Select.css);
+@import url(./components/Option/Option.css);
 @import url(./components/ButtonCreator/ButtonCreator.css);
 @import url(./components/Controller/Controller.css);
