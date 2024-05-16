@@ -12,6 +12,8 @@ function ButtonDemo({ title, className, style, boxShadowStyle }) {
         type="button"
         className={className}
         style={{
+            width: `fit-content`,
+            height: `fit-content`,
             fontSize: `${style.fontSize}px`,
             fontFamily: style.fontFamily,
             fontWeight: `${style.isBold ? "900": "400"}`,

@@ -5,7 +5,7 @@ function HiddenFormSection({ title, children, onClick, isVisible, rowsCount = 2 
     return (
         <>
             <button
-            className={`hidden-from-section__btn ${!isVisible ? "hidden-from-section__btn_active": ""}`}
+            className={`hidden-from-section__btn ${isVisible ? "hidden-from-section__btn_active": ""}`}
             onClick={onClick}
             type="button"
             >

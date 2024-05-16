@@ -1,11 +1,11 @@
 import { PropTypes } from 'prop-types';
 
-function FormSection({ title, children, rowsCount = 2, isVisible}) {
+function FormSection({ title, children, rowsCount = 2, isVisible = true }) {
     return (
         <>
             {title && <h2 className="form-section__title">{title}</h2>}
             <section
-            className={`form-section__section ${isVisible ? "form-section__section_hidden": ""}`}
+            className={`form-section__section ${!isVisible ? "form-section__section_hidden": ""}`}
             style={{gridTemplateRows: `repeat(${rowsCount}, 1fr)`}}>
                 {children}
             </section>

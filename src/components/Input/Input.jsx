@@ -4,7 +4,11 @@ function Input({
     name,
     placeholder,
     onChange,
-    defaultValue
+    defaultValue,
+    range = {
+        max: 30,
+        min: 1
+    }
 }) {
     return (
         <input
@@ -14,6 +18,8 @@ function Input({
         placeholder={placeholder}
         onChange={onChange}
         defaultValue={defaultValue}
+        maxLength={range.max}
+        minLength={range.min}
         />
     )
 }
@@ -22,7 +28,8 @@ Input.propTypes = {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    defaultValue: PropTypes.string.isRequired
+    defaultValue: PropTypes.string.isRequired,
+    range: PropTypes.object
 }
 
 export default Input;

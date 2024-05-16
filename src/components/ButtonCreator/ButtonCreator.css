@@ -9,7 +9,16 @@
     width: 400px;
     overflow: auto;
     overflow-y: scroll;
-    padding: 0 30px;
+    padding: 0 30px 20px;
+}
+
+.btn-creator__demo {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: center;
+    justify-content: space-between;
+    
 }
 
 

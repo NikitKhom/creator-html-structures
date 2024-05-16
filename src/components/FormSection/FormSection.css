@@ -11,12 +11,11 @@
 .form-section__section {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
     grid-row-gap: 10px;
     transition: all .5s ease-in-out;
-    max-height: 200px;
+    max-height: fit-content;
     overflow: hidden;
 }
 

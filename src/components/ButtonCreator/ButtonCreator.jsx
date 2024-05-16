@@ -7,16 +7,24 @@ import ButtonDemo from "../ButtonDemo/ButtonDemo";
 import Option from "../Option/Option";
 import FormSection from "../FormSection/FormSection";
 import HiddenFormSection from "../HiddenFormSection/HiddenFormSection";
+import Radio from "../Radio/Radio";
 
 function ButtonCreator() {
+    const initialBoxShadowValues = {
+        boxShadowX: 0,
+        boxShadowY: 0,
+        blurRadius: 0,
+        spreadRadius: 0,
+    };
+
+    const [buttonType, setButtonType] = useState('button');
+    const [boxShadowMenu, setBoxShadowMenu] = useState(false);
+    const [buttonTypeMenu, setButtonTypeMenu] = useState(false);
     const [checkboxesValues, setCheckboxesValues] = useState({
         isBold: false,
         isItalic: false,
         isInset: false,
     });
-
-    const [boxShadowMenu, setBoxShadowMenu] = useState(false);
-
     const [requiredValues, setRequiredValues] = useState({
         title: 'Button',
         className: 'mybutton',
@@ -27,14 +35,6 @@ function ButtonCreator() {
         borderRadius: 21,
         borderSize: 1,
     });
-
-    const initialBoxShadowValues = {
-        boxShadowX: 0,
-        boxShadowY: 0,
-        blurRadius: 0,
-        spreadRadius: 0,
-    };
-
     const [boxShadowValues, setBoxShadowValues] = useState({
         boxShadowX: 0,
         boxShadowY: 0,
@@ -42,11 +42,17 @@ function ButtonCreator() {
         spreadRadius: 0,
     });
 
-
     function toggleBoxShadowMenu() {
         setBoxShadowMenu(!boxShadowMenu);
         setTimeout(() => {
             setBoxShadowValues(initialBoxShadowValues);
+        }, 500);
+    }
+
+    function toggleButtonTypeMenu() {
+        setButtonTypeMenu(!buttonTypeMenu);
+        setTimeout(() => {
+            setButtonType('button');
         }, 500);
     }
 
@@ -71,6 +77,9 @@ function ButtonCreator() {
         setBoxShadowValues({ ...boxShadowValues, [name]: value });
     }
 
+    function handleChangeButtonType(e) {
+        setButtonType(e.target.value);
+    }
 
     return (
         <main className="btn-creator">
@@ -89,6 +98,10 @@ function ButtonCreator() {
                         placeholder="text: button"
                         onChange={handleChange}
                         defaultValue={requiredValues.title}
+                        range={{
+                            min: 1,
+                            max: 15
+                        }}
                         />
                         <Input
                         name="classname"
@@ -196,11 +209,43 @@ function ButtonCreator() {
                         range={{ min: 0, max: 50 }}
                         />
                     </HiddenFormSection>
+                    <HiddenFormSection
+                    title="Button Type"
+                    isVisible={buttonTypeMenu}
+                    onClick={toggleButtonTypeMenu}
+                    rowsCount={2}
+                    >
+                        <Radio
+                        title="Button"
+                        name="type"
+                        value="button"
+                        onChange={handleChangeButtonType}
+                        isChecked={buttonType}
+                        />
+                        <Radio
+                        title="Submit"
+                        name="type"
+                        value="submit"
+                        onChange={handleChangeButtonType}
+                        isChecked={buttonType}
+                        />
+                        <Radio
+                        title="Reset"
+                        name="type"
+                        value="reset"
+                        onChange={handleChangeButtonType}
+                        isChecked={buttonType}
+                        />
+                        <Radio
+                        title="Link"
+                        name="type"
+                        value="link"
+                        onChange={handleChangeButtonType}
+                        isChecked={buttonType}
+                        />
+                    </HiddenFormSection>
                 </form>
-                <Frame
-                width={300}
-                height={200}
-                >
+                <div className="btn-creator__demo">
                     <ButtonDemo
                         title={requiredValues.title}
                         className={requiredValues.className}
@@ -221,7 +266,9 @@ function ButtonCreator() {
                             spreadRadius: boxShadowValues.spreadRadius,
                         }}
                     />
-                </Frame>
+                </div>
+                
+
             </Frame>
         </main>
 
