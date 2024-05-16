@@ -1,0 +1,22 @@
+.color-select {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    padding: 20px;
+}
+
+.color-select__input {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+
+.color-select__input:hover {
+    transform: scale(101%);
+    box-shadow: 3px 3px black;
+}

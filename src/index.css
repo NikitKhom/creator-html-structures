@@ -11,6 +11,8 @@
 @import url(./components/Input/Input.css);
 @import url(./components/Select/Select.css);
 @import url(./components/Option/Option.css);
+@import url(./components/Tooltip/Tooltip.css);
+@import url(./components/ColorSelect/ColorSelect.css);
 @import url(./components/FormSection/FormSection.css);
 @import url(./components/ButtonCreator/ButtonCreator.css);
 @import url(./components/Controller/Controller.css);

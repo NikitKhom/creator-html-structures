@@ -8,6 +8,7 @@ import Option from "../Option/Option";
 import FormSection from "../FormSection/FormSection";
 import HiddenFormSection from "../HiddenFormSection/HiddenFormSection";
 import Radio from "../Radio/Radio";
+import ColorSelect from "../ColorSelect/ColorSelect";
 
 function ButtonCreator() {
     const initialBoxShadowValues = {
@@ -16,6 +17,7 @@ function ButtonCreator() {
         blurRadius: 0,
         spreadRadius: 0,
     };
+
 
     const [buttonType, setButtonType] = useState('button');
     const [boxShadowMenu, setBoxShadowMenu] = useState(false);
@@ -35,6 +37,12 @@ function ButtonCreator() {
         borderRadius: 21,
         borderSize: 1,
     });
+    const [buttonColorsValues, setButtonColorsValues] = useState({
+        textColor: '#FFFFFF',
+        buttonColor: '#d4d4d4',
+        borderColor: '#000000',
+        shadowColor: '#000000',
+    });
     const [boxShadowValues, setBoxShadowValues] = useState({
         boxShadowX: 0,
         boxShadowY: 0,
@@ -46,6 +54,7 @@ function ButtonCreator() {
         setBoxShadowMenu(!boxShadowMenu);
         setTimeout(() => {
             setBoxShadowValues(initialBoxShadowValues);
+            setButtonColorsValues({...buttonColorsValues, shadowColor: '#000000'});
         }, 500);
     }
 
@@ -77,6 +86,13 @@ function ButtonCreator() {
         setBoxShadowValues({ ...boxShadowValues, [name]: value });
     }
 
+    function handleChangeColor(e) {
+        const input = e.target;
+        const value = input.value;
+        const name = input.name;
+        setButtonColorsValues({ ...buttonColorsValues, [name]: value });
+    }
+
     function handleChangeButtonType(e) {
         setButtonType(e.target.value);
     }
@@ -88,9 +104,11 @@ function ButtonCreator() {
             height={500}
             option={true}
             >
-                <form className="btn-creator__form">
+                <form
+                className="btn-creator__form"
+                id="btnForm">
                     <FormSection
-                    title="Текст"
+                    title="Text"
                     rowsCount={3}
                     >
                         <Input 
@@ -246,6 +264,35 @@ function ButtonCreator() {
                     </HiddenFormSection>
                 </form>
                 <div className="btn-creator__demo">
+                    <ColorSelect
+                    colorsInfo={[
+                        {
+                        title: "Text",
+                        name: "textColor",
+                        value: buttonColorsValues.textColor,
+                        isVisible: true,
+                        },
+                        {
+                        title: "Background",
+                        name: "buttonColor",
+                        value: buttonColorsValues.buttonColorColor,
+                        isVisible: true,
+                        },
+                        {
+                        title: "Border",
+                        name: "borderColor",
+                        value: buttonColorsValues.borderColor,
+                        isVisible: true,
+                        },
+                        {
+                        title: "Shadow",
+                        name: "shadowColor",
+                        value: buttonColorsValues.shadowColor,
+                        isVisible: boxShadowMenu,
+                        },
+                    ]}
+                    onChange={handleChangeColor}
+                    />
                     <ButtonDemo
                         title={requiredValues.title}
                         className={requiredValues.className}
@@ -265,7 +312,20 @@ function ButtonCreator() {
                             blurRadius: boxShadowValues.blurRadius,
                             spreadRadius: boxShadowValues.spreadRadius,
                         }}
+                        colors={{
+                            textColor: buttonColorsValues.textColor,
+                            buttonColor: buttonColorsValues.buttonColor,
+                            borderColor: buttonColorsValues.borderColor,
+                            shadowColor: buttonColorsValues.shadowColor,
+                        }}
                     />
+                    <button
+                    className="btn-crator__submit"
+                    type="submit"
+                    form="btnForm"
+                    >
+                        Get Code
+                    </button>
                 </div>
                 
 
