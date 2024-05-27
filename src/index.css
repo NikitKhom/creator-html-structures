@@ -18,3 +18,6 @@
 @import url(./components/Controller/Controller.css);
 @import url(./components/HiddenFormSection/HiddenFromSection.css);
 @import url(./components/Radio/Radio.css);
+@import url(./components/Popup/Popup.css);
+@import url(./components/CodeBlock/CodeBlock.css);
+@import url(./components/CodePopup/CodePopup.css);

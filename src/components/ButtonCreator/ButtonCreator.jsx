@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PropTypes } from 'prop-types';
 import Frame from "../Frame/Frame";
 import Input from "../Input/Input";
 import Select from "../Select/Select";
@@ -10,7 +11,7 @@ import HiddenFormSection from "../HiddenFormSection/HiddenFormSection";
 import Radio from "../Radio/Radio";
 import ColorSelect from "../ColorSelect/ColorSelect";
 
-function ButtonCreator() {
+function ButtonCreator({ onSubmit }) {
     const initialBoxShadowValues = {
         boxShadowX: 0,
         boxShadowY: 0,
@@ -49,6 +50,11 @@ function ButtonCreator() {
         blurRadius: 0,
         spreadRadius: 0,
     });
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        onSubmit();
+    }
 
     function toggleBoxShadowMenu() {
         setBoxShadowMenu(!boxShadowMenu);
@@ -106,7 +112,9 @@ function ButtonCreator() {
             >
                 <form
                 className="btn-creator__form"
-                id="btnForm">
+                id="btnForm"
+                onSubmit={handleSubmit}
+                >
                     <FormSection
                     title="Text"
                     rowsCount={3}
@@ -333,6 +341,10 @@ function ButtonCreator() {
         </main>
 
     )
+}
+
+ButtonCreator.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
 }
 
 export default ButtonCreator;

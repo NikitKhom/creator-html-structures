@@ -1,0 +1,34 @@
+.codeblock {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.codeblock__code {
+    box-sizing: border-box;
+}
+
+.codeblock__copy-btn {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: 0;
+    background: url(../../images/copy.svg);
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.codeblock__copy-btn_copied {
+    background: url(../../images/tick.svg);
+    background-position: center;
+    background-size: contain;
+}
+
+.codeblock__title {
+    display: inline-block;
+    font-size: 24px;
+    line-height: 25px;
+    font-weight: 500;
+    margin: 0 20px 0 0;
+}
+
