@@ -1,18 +1,27 @@
 import { PropTypes } from 'prop-types';
 
-function ButtonDemo({ title, className, style, boxShadowStyle, colors }) {
+function ButtonDemo({ values }) {
     const {
         boxShadowY,
         boxShadowX,
         blurRadius,
-        spreadRadius
-    } = boxShadowStyle;
-    const {
+        spreadRadius,
         textColor,
         buttonColor, 
         borderColor,
-        shadowColor
-    } = colors;
+        shadowColor,
+        className,
+        title,
+        fontSize,
+        fontFamily,
+        verticalPadding,
+        horizontalPadding,
+        borderSize,
+        borderRadius,
+        isBold,
+        isItalic
+    } = values;
+
     return (
         <input
         type="button"
@@ -20,15 +29,15 @@ function ButtonDemo({ title, className, style, boxShadowStyle, colors }) {
         style={{
             width: `fit-content`,
             height: `fit-content`,
-            fontSize: `${style.fontSize}px`,
-            fontFamily: style.fontFamily,
+            fontSize: `${fontSize}px`,
+            fontFamily: fontFamily,
             color: textColor,
             backgroundColor: buttonColor,
-            fontWeight: `${style.isBold ? "900": "400"}`,
-            fontStyle: `${style.isItalic ? "italic": "normal"}`,
-            padding: `${style.verticalPadding}px ${style.horizontalPadding}px`,
-            border: `${style.borderSize}px solid ${borderColor}`,
-            borderRadius: `${style.borderRadius}px`,
+            fontWeight: `${isBold ? "900": "400"}`,
+            fontStyle: `${isItalic ? "italic": "normal"}`,
+            padding: `${verticalPadding}px ${horizontalPadding}px`,
+            border: `${borderSize}px solid ${borderColor}`,
+            borderRadius: `${borderRadius}px`,
             boxShadow: `${boxShadowY}px ${boxShadowX}px ${blurRadius}px ${spreadRadius}px ${shadowColor}`,
         }}
         value={title}
@@ -38,11 +47,7 @@ function ButtonDemo({ title, className, style, boxShadowStyle, colors }) {
 }
 
 ButtonDemo.propTypes = {
-    title: PropTypes.string,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    boxShadowStyle: PropTypes.object,
-    colors: PropTypes.object,
+    values: PropTypes.object.isRequired,
 }
 
 export default ButtonDemo;

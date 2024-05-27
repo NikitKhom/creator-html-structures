@@ -5,7 +5,7 @@ import Main from '../Main/Main';
 import InProgress from '../InProgress/InProgress';
 import ButtonCreator from '../ButtonCreator/ButtonCreator';
 import Footer from '../Footer/Footer';
-import CodePopup from '../CodePopup/CodePopup';
+import ButtonCodePopup from '../ButtonCodePopup/ButtonCodePopup';
 
 
 
@@ -13,6 +13,40 @@ import CodePopup from '../CodePopup/CodePopup';
 function App() {
   
   const [ buttonPopup, setButtonPopup ] = useState(false);
+  const [ buttonValues, setButtonValues ] = useState({
+    title: 'Button',
+    className: 'mybutton',
+    fontFamily: 'Arial',
+    fontSize: 18,
+    verticalPadding: 16,
+    horizontalPadding: 30,
+    borderRadius: 0,
+    borderSize: 2,
+    textColor: '#000000',
+    buttonColor: '#FFFB47',
+    borderColor: '#000000',
+    shadowColor: '#000000',
+    boxShadowX: 0,
+    boxShadowY: 0,
+    blurRadius: 0,
+    spreadRadius: 0,
+    type: 'button',
+    isBold: true,
+    isItalic: false,
+  });
+
+  function handleButtonChange(e) {
+    const input = e.target;
+    const name = input.name;
+    const type = input.type;
+    if (type === 'checkbox') {
+        const isChecked = input.checked;
+        setButtonValues({ ...buttonValues, [name]: isChecked });
+    } else {
+        const value = input.value;
+        setButtonValues({ ...buttonValues, [name]: value });
+    }
+}
 
   function openButtonPopup() {
     setButtonPopup(true);
@@ -40,7 +74,10 @@ function App() {
             path='/create-button'
             element={ 
               <ButtonCreator
+              values={buttonValues}
+              onChange={handleButtonChange}
               onSubmit={openButtonPopup}
+              setValues={setButtonValues}
               />
               }/>
           <Route
@@ -50,18 +87,10 @@ function App() {
               }/>
       </Routes>
       <Footer />
-      <CodePopup
+      <ButtonCodePopup
       isOpen={buttonPopup}
       onClose={closePopups}
-      html={`<a class="btn href="#"></a>`}
-      css={`
-      .btn {
-        color: black;
-        text-decoration: none;
-        border: 1px solid black;
-        background-color: white;
-      }
-      `}
+      values={buttonValues}
       />
     </div>
   )
